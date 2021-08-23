@@ -1,12 +1,16 @@
 {{#each this}}
-  <h2>{name}</h2>
-  <img src='{flag}' alt='' />
-  <p>Capital: {capital}</p>
-  <p>Population: {population}</p>
-  <p>Languages:</p>
-  <ul>
-    {{#each languages}}
-      <li>{{this}}</li>
-    {{/each}}
-  </ul>
+  <h2 class='title'>{{name}}</h2>
+  <div class='wrapper'>
+    <div class='wrap'>
+      <p class='title__item'>Capital: <span class='title__item--into'>{{capital}}</span></p>
+      <p class='title__item'>Population: <span class='title__item--into'>{{population}}</span></p>
+      <p class='title__item'>Languages:</p>
+      <ul class='title__item--into'>
+        {{#each languages}}
+          <li>{{name}}</li>
+        {{/each}}
+      </ul>
+    </div>
+    <img src='{{flag}}' alt='{{name}} width="300"' />
+  </div>
 {{/each}}

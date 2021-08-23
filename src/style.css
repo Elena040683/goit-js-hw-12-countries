@@ -4,3 +4,25 @@
   padding-left: 40px;
   margin-bottom: 20px;
 }
+
+.title {
+  font-weight: bold;
+  font-size: 80px;
+  text-align: center;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.title__item {
+  font-weight: 700;
+  font-size: 45px;
+  margin-bottom: 60px;
+}
+
+.title__item--into {
+  font-weight: 400;
+  font-size: 35px;
+}

@@ -4,17 +4,26 @@ import '@pnotify/core/dist/BrightTheme.css';
 import fetchCountries from './js/fetchCountries';
 import countryTpl from './templates/country.hbs';
 
+let searchQuery = '';
+
 const refs = {
   input: document.querySelector('#search'),
   container: document.querySelector('.container'),
 };
 
-refs.input.addEventListener('input', debounce(onInputChange, 500));
+refs.input.addEventListener(
+  'input',
+  debounce(() => {
+    onInputChange();
+  }, 500),
+);
 
-function onInputChange(e) {
-  e.preventDefault();
-  const searchQuery = refs.input.value;
-  fetchCountries(searchQuery).then(data => countriesLoadResult(data));
+function onInputChange() {
+  resetSearch();
+  searchQuery = refs.input.value;
+  fetchCountries(searchQuery)
+    .then(countriesLoadResult)
+    .catch(err => console.log(err));
 }
 
 function countriesLoadResult(data) {
@@ -44,6 +53,6 @@ function renderCollection(arr) {
   arr.forEach(el => markupCountries(el));
 }
 
-function countryRender() {
-  refs.container.insertAdjacentHTML('beforeend', countryTpl);
+function countryRender(data) {
+  refs.container.insertAdjacentHTML('beforeend', countryTpl(data));
 }
