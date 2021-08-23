@@ -45,7 +45,7 @@ function resetSearch() {
 }
 
 function markupCountries({ name }) {
-  const country = `<li class="title__item">${name}</li>`;
+  const country = `<li class = "country">${name}</li>`;
   refs.container.insertAdjacentHTML('beforeend', country);
 }
 
