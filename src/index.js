@@ -1,5 +1,5 @@
 import debounce from 'lodash.debounce';
-import { alert, error } from '../node_modules/@pnotify/core/dist/PNotify.js';
+import { info, error } from '../node_modules/@pnotify/core/dist/PNotify.js';
 import '@pnotify/core/dist/BrightTheme.css';
 import fetchCountries from './js/fetchCountries';
 import countryTpl from './templates/country.hbs';
@@ -36,6 +36,11 @@ function countriesLoadResult(data) {
   } else if (data.length > 10) {
     error({
       text: 'Too many matches found. Please enter a more specific query!',
+    });
+  } else {
+    info({
+      title: 'Notification',
+      text: 'No matches found.',
     });
   }
 }
